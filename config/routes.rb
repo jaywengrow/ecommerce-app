@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   post 'orders' => 'orders#create'
   get 'orders' => 'orders#new'
 
+  post 'carted_products' => 'carted_products#create'
+
   # 'item-page/:id' => 'products#show'
  
   # The priority is based upon order of creation: first created -> highest priority.

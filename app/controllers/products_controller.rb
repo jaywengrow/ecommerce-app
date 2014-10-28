@@ -46,6 +46,7 @@ class ProductsController < ApplicationController
 		else	
 			@product = Product.find_by(:id => params[:id])
 		end
+		@carted_product = CartedProduct.new
 	end
 
 	def new
