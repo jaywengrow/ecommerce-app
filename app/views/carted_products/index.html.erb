@@ -15,3 +15,7 @@
 <% end %>
 </table>
 <h3>Total Price: <%= number_to_currency(@order.total_price) %></h3>
+
+<%= form_for @order do |f| %>
+  <%= f.submit "Complete Checkout" %>
+<% end %>
