@@ -1,0 +1,14 @@
+<h1>Checkout</h1>
+
+<table id="checkout-products">
+  <tr>
+    <th>Product</th>
+    <th>Quantity</th>
+  </tr>
+<% @carted_products.each do |carted_product| %>
+  <tr>
+    <td><%= carted_product.product.name %></td>
+    <td><%= carted_product.quantity %></td>
+  </tr>
+<% end %>
+</table>

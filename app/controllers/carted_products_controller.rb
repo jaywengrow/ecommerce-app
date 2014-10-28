@@ -1,5 +1,9 @@
 class CartedProductsController < ApplicationController
 
+  def index
+    @carted_products = current_user.orders.find_by(:status => "cart").carted_products
+  end
+
   def create
     if current_user.orders.where(:status => "cart").empty?
       @order = current_user.orders.create(:status => "cart")
