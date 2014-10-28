@@ -1,7 +1,8 @@
 class CartedProductsController < ApplicationController
 
   def index
-    @carted_products = current_user.orders.find_by(:status => "cart").carted_products
+    @order = current_user.orders.find_by(:status => "cart")
+    @carted_products = @order.carted_products
   end
 
   def create
