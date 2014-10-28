@@ -16,6 +16,8 @@ class OrdersController < ApplicationController
 	end
 
 	def update
+		@order = Order.find(params[:id])
+		@order.update(:status => "purchased")
 	end
 
 	def new
