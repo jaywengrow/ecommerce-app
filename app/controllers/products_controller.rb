@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
 	end
 
 	def show
-		@order = Order.new
+		@carted_product = CartedProduct.new
 
 		if params[:id] == "random"
 			product = Product.all

@@ -6,14 +6,19 @@ Rails.application.routes.draw do
   get 'products/new' => 'products#new'
   get 'products' => 'products#index'
   post 'products' => 'products#create'
-  get 'products/:id' => 'products#show', :as => :product
+  get 'products/:id' => 'products#show'
   get 'products/:id/edit' => 'products#edit'
-  patch 'products/:id' => 'products#update'
+  patch 'products/:id' => 'products#update', :as => :product
   delete 'products/:id' => 'products#destroy'
   get 'products/random_product' => 'products#random'
 
   post 'orders' => 'orders#create'
   get 'orders' => 'orders#new'
+  patch 'orders/:id' => 'orders#update', :as => :order
+
+  get 'carted_products' => 'carted_products#index'
+  post 'carted_products' => 'carted_products#create'
+
 
   # 'item-page/:id' => 'products#show'
  

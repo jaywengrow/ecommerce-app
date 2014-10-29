@@ -2,12 +2,12 @@ class Product < ActiveRecord::Base
 
 	has_many :categorized_products
 	has_many :categories, :through => :categorized_products
-
-
-	belongs_to :vendor
+	has_many :carted_products
+	has_many :orders, :through => :carted_products
 	has_many :orders
 	has_many :product_photos
 	has_many :product_options
+	belongs_to :vendor
 
 	attr_accessor :product_options_list, :product_photos_list
 

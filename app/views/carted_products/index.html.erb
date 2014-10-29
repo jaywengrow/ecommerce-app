@@ -1,0 +1,22 @@
+<h1>Checkout</h1>
+
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+  <% @carted_products.each do |carted_product| %>
+    <tr>
+      <td><%= carted_product.product.name %></td>
+      <td><%= carted_product.quantity %></td>
+      <td><%= number_to_currency(carted_product.price) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>Total: <%= number_to_currency(@order.total_price) %></h3>
+
+<%= form_for @order do |f| %>
+  <%= f.submit "Complete Purchase" %>
+<% end %>
