@@ -17,10 +17,14 @@
   </div>
   	<p><%= product.description %></p>
   	<p><%= product.friendly_price %></p>
+    
   	<p><a href="products/<%= product.id %>/edit">
+
   	<img src="<%= product.photo %>" height="200" width="200"/>
   		<p>Edit Item</p></a>
-  		<a data-method="delete" href="/products/<%=product.id %>" rel="nofollow">Delete Item</a>
+      <% if current_user && current_user.admin? %>
+  		  <a data-method="delete" href="/products/<%=product.id %>" rel="nofollow">Delete Item</a>
+      <% end %>
   	</br>
   	</br>
   	</br>

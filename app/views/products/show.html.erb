@@ -22,15 +22,17 @@
 </br>
 </br>
 
-<%= form_for @carted_product do |f| %>
+<% if user_signed_in? %>
+	<%= form_for @carted_product do |f| %>
 
-	<%= f.label :quantity %>
-	<%= f.text_field :quantity %>
+		<%= f.label :quantity %>
+		<%= f.text_field :quantity %>
 
-	<%= f.hidden_field :product_id, value: @product.id %>
+		<%= f.hidden_field :product_id, value: @product.id %>
 
-	<%= f.submit "Add To Cart" %>
+		<%= f.submit "Add To Cart" %>
 
+	<% end %>
 <% end %>
 
 <a href="/">Go home</a>

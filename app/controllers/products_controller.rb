@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+	before_filter :authenticate_admin!, :only => [:destroy]
 	def create
 		product = Product.create(params[:product])
 		# options = params[:product][:options].split(",")
@@ -62,6 +63,8 @@ class ProductsController < ApplicationController
 	end
 
 	def destroy
+		# authenticate_admin!
+		puts "ASDFADFSF"
 		@product = Product.find_by(:id => params[:id])
 		@product.destroy
 		flash[:danger] = "Product Deleted."
