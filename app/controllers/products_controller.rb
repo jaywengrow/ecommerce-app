@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+	before_action :authenticate_admin!, :only => [:edit, :destroy]
+
 	def create
 		product = Product.create(params[:product])
 		# options = params[:product][:options].split(",")

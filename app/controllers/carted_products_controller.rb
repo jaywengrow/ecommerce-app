@@ -1,4 +1,5 @@
 class CartedProductsController < ApplicationController
+  before_action :authenticate_user!#, :except => [:index, :create]
 
   def index
     @order = Order.find_by(:user_id => current_user.id, :status => "cart")
