@@ -1,4 +1,4 @@
-<h2>In honor of July 4th, we're giving 5 bucks off!</h2>
+<h2>In honor of July 4th, we're giving <%= EcommerceApp::Application.config.holiday_dollars %> bucks off!</h2>
 
 <h1> <%= @product.name %> </h1>
 <% if @product.vendor %>
@@ -18,7 +18,7 @@
 <h3><%= @product.friendly_price %> </h>
 <h5><%= @product.sales_tax %></h5>
 <img src="<%= @product.photo %>" height="200" width="200" />
-<% if user_signed_in && current_user.admin? %>
+<% if user_signed_in? && current_user.admin? %>
 	<p><a href="/products/<%= @product.id %>/edit">
 	  	<p>Edit Item</p></a>
 <% end %>

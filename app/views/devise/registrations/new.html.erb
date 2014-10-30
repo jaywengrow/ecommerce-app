@@ -1,5 +1,5 @@
 <h2>Sign up</h2>
-<h3>In honor of July 4th, we're giving $5 off!</h3>
+<h3>In honor of July 4th, we're giving $<%= EcommerceApp::Application.config.holiday_dollars %> off!</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
