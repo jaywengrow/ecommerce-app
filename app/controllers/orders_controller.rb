@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
 
 		@order = Order.find(params[:id])
 		@order.update(:status => "purchased", :total => @order.total_price)
+		flash.now[:success] = "Congrats on saving 5 dollars!"
 	end
 
 	def new
