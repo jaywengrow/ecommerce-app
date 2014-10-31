@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
+
+    get 'products/new' => 'products#new', :as => :new_product
+    get 'products' => 'products#index', :as => :products
+    post 'products' => 'products#create'
+    get 'products/:id' => 'products#show', :as => :product
+    get 'products/:id/edit' => 'products#edit', :as => :edit_product
+    patch 'products/:id' => 'products#update'
+    delete 'products/:id' => 'products#destroy'
+
+
+  
   devise_for :users
   root 'products#index'
   get 'products/kylestore' => 'products#kylestore'
-  get 'products' => 'products#new'
-  get 'products/new' => 'products#new'
-  get 'products' => 'products#index'
-  post 'products' => 'products#create'
-  get 'products/:id' => 'products#show'
-  get 'products/:id/edit' => 'products#edit'
-  patch 'products/:id' => 'products#update', :as => :product
-  delete 'products/:id' => 'products#destroy'
   get 'products/random_product' => 'products#random'
 
   post 'orders' => 'orders#create'

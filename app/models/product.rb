@@ -9,6 +9,10 @@ class Product < ActiveRecord::Base
 	has_many :product_options
 	belongs_to :vendor
 
+	validates :name, :presence => true
+	validates :name, :uniqueness => true
+	
+
 	attr_accessor :product_options_list, :product_photos_list
 
 	def friendly_price

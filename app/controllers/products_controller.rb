@@ -2,17 +2,13 @@ class ProductsController < ApplicationController
 	before_action :authenticate_admin!, :only => [:edit, :destroy]
 
 	def create
-		product = Product.create(params[:product])
-		# options = params[:product][:options].split(",")
-		# options.each do |options|
-		# 	ProductOption.create(:name => option.name, :product_id => product.id)
-		# end
-		flash[:success] = "Product Succesfully Added."
-		redirect_to "/products/#{product.id}"
-	
-
-		#Product.create(:name => params[:name], :description => params[:description],
-			#:price => params[:price])
+		@product = Product.new(params[:product])
+		if @product.save
+			flash[:success] = "Product Succesfully Added."
+			redirect_to product_path(@product.id)
+		else
+			render 'new'
+		end
 	end
 
 	def kylestore
@@ -67,7 +63,7 @@ class ProductsController < ApplicationController
 		@product = Product.find_by(:id => params[:id])
 		@product.destroy
 		flash[:danger] = "Product Deleted."
-		redirect_to '/'
+		redirect_to products_path #"/products"
 
 	end
 end

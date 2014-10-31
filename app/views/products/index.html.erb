@@ -14,14 +14,14 @@
 <% @products.each do |product| %>
 
 <div class="col-md-3">
-  <div><a href="products/<%= product.id %>"><%= product.name %></a>
+  <div><a href="<%= product_path(product.id) %>"><%= product.name %></a>
   </div>
   	<p><%= product.description %></p>
   	<p><%= product.friendly_price %></p>
   	<img src="<%= product.photo %>" height="200" width="200"/>
     <% if user_signed_in? && current_user.admin? %>
-  		<p><a href="products/<%= product.id %>/edit">Edit Item</a></p>
-  		<p><a data-method="delete" href="/products/<%=product.id %>" rel="nofollow">Delete Item</a></p>
+  		<p><a href="<%= edit_product_path(product.id) %>/edit">Edit Item</a></p>
+  		<p><a data-method="delete" href="<%= product_path(product.id) %>" rel="nofollow">Delete Item</a></p>
     <% end %>
   	</br>
   	</br>
