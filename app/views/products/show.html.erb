@@ -14,9 +14,8 @@
 	<% end %>
 </ul>
 <% end %>
-<h4><%= @product.sale_price %></h4>
-<h3><%= @product.friendly_price %> </h>
-<h5><%= @product.sales_tax %></h5>
+<h3><%= number_to_currency(@product.price) %> </h>
+<h5>Tax: <%= number_to_currency(@product.sales_tax) %></h5>
 <img src="<%= @product.photo %>" height="200" width="200" />
 <% if user_signed_in? && current_user.admin? %>
 	<p><a href="/products/<%= @product.id %>/edit">

@@ -12,45 +12,22 @@ class Product < ActiveRecord::Base
 	validates :name, :presence => true
 	validates :name, :uniqueness => true
 	
-
 	attr_accessor :product_options_list, :product_photos_list
 
-	def friendly_price
-		x = price.round(2)
-		x = x.to_s
-		x += "0" if x.split(".")[1].length == 1
-		x = "$" + x
-	
-		return x
-
-	end
-
-	def sale_price
+	def sale_message
 		if price > 30
-			return "Sale Price"
+			return "Sale!"
 		else price < 30
 			return "DISCOUNT ITEM!"
-	
 		end
 	end
 
 	def sales_tax
-
-		@tax = (price*0.09).round(2)
-		x = @tax.to_s
-		
-		return "Sales Tax: $" + x 
-		
-
+		return (price * 0.09).round(2)
 	end
 
 	def total_price
-
-		z = @tax + price
-		z = z.to_s
-		return "Total Price: $" + z
-
-
+		return (price + sales_tax).round(2)
 	end
 end
 
