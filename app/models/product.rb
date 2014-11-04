@@ -15,9 +15,9 @@ class Product < ActiveRecord::Base
 	attr_accessor :product_options_list, :product_photos_list
 
 	def sale_message
-		if price > 30
+		if price >= 30
 			return "Sale!"
-		else price < 30
+		elsif price < 30
 			return "DISCOUNT ITEM!"
 		end
 	end
