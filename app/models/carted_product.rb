@@ -7,4 +7,8 @@ class CartedProduct < ActiveRecord::Base
   def price
     return quantity * product.price
   end
+
+  def update_quantity(new_quantity)
+    update(:quantity => new_quantity)
+  end
 end

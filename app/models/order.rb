@@ -11,4 +11,8 @@ class Order < ActiveRecord::Base
     return price
   end
 
+  def refund!
+    update(:status => "refunded")
+  end
+
 end

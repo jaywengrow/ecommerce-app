@@ -1,16 +1,25 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# describe CartedProduct do
+describe CartedProduct do
+  describe "price" do
+    it "should return the quantity multiplied by the price of the product" do
+      product = Product.create!(:price => 10.0, :name => "Basketball")
+      carted_product = CartedProduct.create!(:product_id => product.id, :quantity => 3)
 
-#   describe "price" do
+      expect(carted_product.price).to eq(30.0)
+    end
+  end
 
-#     it 'should return the quantity multiplied by the price of the product' do
-#       product = Product.create!(name: "Kazoo", price: 5)
-#       carted_product = CartedProduct.create(quantity: 3, product_id: product.id)
-#       expect(carted_product.price).to eq(15)
+  describe "update_quantity" do
+    it "should update the quantity of a carted product by the specified number" do
+      product = Product.create!(:price => 10.0, :name => "Basketball")
+      carted_product = CartedProduct.create!(:product_id => product.id, :quantity => 3)
 
-#     end
+      carted_product.update_quantity(1)
 
-#   end
+      expect(carted_product.quantity).to eq(1)
+    end
+  end
 
-# end
+end
+
