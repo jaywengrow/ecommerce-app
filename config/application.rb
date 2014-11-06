@@ -28,6 +28,6 @@ module EcommerceApp
     # config.i18n.default_locale = :de
     config.action_controller.permit_all_parameters = true
 
-    config.holiday_dollars = 10
+    # config.holiday_dollars = 10
   end
 end
