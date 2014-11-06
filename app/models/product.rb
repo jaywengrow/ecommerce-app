@@ -11,6 +11,8 @@ class Product < ActiveRecord::Base
 
 	validates :name, :presence => true
 	validates :name, :uniqueness => true
+
+	mount_uploader :photo, ProductPhotoUploader
 	
 	attr_accessor :product_options_list, :product_photos_list
 
